@@ -1,0 +1,3 @@
+#!/bin/bash
+KEY=$(./main KEY | cut -d' ' -f1)
+./expect_ssh_blj USERNAME PASSWORD $KEY

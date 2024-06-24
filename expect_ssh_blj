@@ -1,0 +1,14 @@
+#!/usr/bin/expect
+set USERNAME [lindex $argv 0]
+set PASSWORD [lindex $argv 1]
+set KEY [lindex $argv 2]
+spawn ssh $USERNAME@blj.shunwang.com
+#expect {($USERNAME@blj.shunwang.com) Password:}
+# Just matching the last letter is enough
+# The accurate letter is fastest.
+expect {d:}
+send -- "$PASSWORD\r"
+#expect {2nd Password:}
+expect {d:}
+send -- "$KEY\r"
+interact
